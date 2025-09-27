@@ -1,4 +1,5 @@
 pub(crate) mod deserialize_utils;
+pub(crate) mod serialize_utils;
 
 #[macro_export]
 ///```ignore

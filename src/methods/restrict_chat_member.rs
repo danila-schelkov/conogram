@@ -4,6 +4,7 @@ use serde::Serialize;
 use crate::{
     entities::{chat_permissions::ChatPermissions, misc::chat_id::ChatId},
     utils::deserialize_utils::is_false,
+    utils::serialize_utils::serialize_until_date,
 };
 
 /// Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.
@@ -26,7 +27,10 @@ pub struct RestrictChatMemberParams {
     pub use_independent_chat_permissions: bool,
 
     /// Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_until_date"
+    )]
     pub until_date: Option<i64>,
 }
 
