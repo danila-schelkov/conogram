@@ -16,7 +16,7 @@ where
             .as_secs() as i64;
 
         if *timestamp < now + 60 {
-            warn!("until_date clamped perhaps due to long retry attemps");
+            warn!("until_date clamped perhaps due to long retry attempts");
             serializer.serialize_some(&(now + 60))
         } else {
             let clamped = std::cmp::max(*timestamp, now + 60);
