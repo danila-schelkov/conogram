@@ -12,7 +12,7 @@ use crate::{
 #[derive(Debug, Clone, Serialize, Request)]
 #[conogram(result = bool)]
 pub struct BanChatMemberParams {
-    /// Unique identifier for the target group or username of the target supergroup or channel (in the format `@channelusername`)
+    /// Unique identifier for the target group or username of the target supergroup or channel in the format `@username`
     pub chat_id: ChatId,
 
     /// Unique identifier of the target user
